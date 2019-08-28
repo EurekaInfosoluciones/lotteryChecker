@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lottery Checker</string>
+
+    <string name="camera_needed">Enable Camera</string>
+    <string name="camera_needed_desc">Please provide us access to your camera, which is required to scan the lottery receipts</string>
+
+    <string name="camera_cta">Grant permission</string>
+</resources>
