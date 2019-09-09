@@ -1,4 +1,4 @@
-package com.eurekainfosoluciones.lottery.ui.activities
+package com.eurekainfosoluciones.lottery.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import com.eurekainfosoluciones.lottery.R

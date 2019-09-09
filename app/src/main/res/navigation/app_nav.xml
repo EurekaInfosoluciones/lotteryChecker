@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/onBoardingCameraFragment"
-        android:name="com.eurekainfosoluciones.lottery.ui.fragments.OnBoardingCameraFragment"
+        android:name="com.eurekainfosoluciones.lottery.fragments.OnBoardingCameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera"/>
 </navigation>

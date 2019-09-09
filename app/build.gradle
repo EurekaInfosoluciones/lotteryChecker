@@ -31,8 +31,6 @@ repositories {
 }
 
 dependencies {
-    //TODO extract all the versions
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}"
     implementation "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     implementation "androidx.core:core-ktx:${Versions.CORE_KTX}"
@@ -41,6 +39,14 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:${Versions.ANDROIDX_NAVIGATION}"
 
     testImplementation "junit:junit:${Versions.JUNIT}"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.MOCKITO_KOTLIN}"
+    testImplementation "org.robolectric:robolectric:${Versions.ROBOLECTRIC}"
+    testImplementation(
+            "androidx.test:runner:${Versions.ANDROIDX_TEST}",
+            "androidx.test:rules:${Versions.ANDROIDX_TEST}"
+    )
+    testImplementation "androidx.test.ext:junit:${Versions.ANDROIDX_JUNIT}"
+    testImplementation "com.google.truth:truth:${Versions.TRUTH}"
 
     androidTestImplementation(
             "androidx.test:runner:${Versions.ANDROIDX_TEST}",

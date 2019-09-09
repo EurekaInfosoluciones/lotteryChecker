@@ -11,7 +11,11 @@ object Versions {
 
     //test dependencies
     const val JUNIT = "4.12"
+    const val MOCKITO_KOTLIN = "2.2.0"
+    const val ROBOLECTRIC = "4.3"
     const val ANDROIDX_TEST = "1.2.0"
+    const val ANDROIDX_JUNIT = "1.0.0"
+    const val TRUTH = "1.0"
     const val ESPRESSO = "3.2.0"
 }
 
