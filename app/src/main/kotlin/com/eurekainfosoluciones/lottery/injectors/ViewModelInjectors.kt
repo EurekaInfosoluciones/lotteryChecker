@@ -15,10 +15,9 @@ object ViewModelInjectors {
             OnBoardingCameraViewModel(
                 FragmentRequestPermission(
                     fragment,
-                    arrayOf(Manifest.permission.CAMERA)
+                    Manifest.permission.CAMERA
                 )
             ) as T
-
     }
 
 

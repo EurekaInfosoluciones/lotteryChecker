@@ -1,14 +1,15 @@
 package com.eurekainfosoluciones.lottery.android
 
+import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 
 class FragmentRequestPermission(
     private val fragment: Fragment,
-    private val permission: Array<String>
+    private val permission: String
 ) :
     RequestPermission {
     override fun request() {
-        fragment.requestPermissions(permission, PERMISSION_REQUEST_CODE)
+        fragment.requestPermissions(arrayOf(permission), PERMISSION_REQUEST_CODE)
     }
 
     override fun verifyResult(
@@ -16,7 +17,8 @@ class FragmentRequestPermission(
         permissions: Array<out String>,
         results: IntArray
     ): Boolean {
-        return false
+        return requestCode == PERMISSION_REQUEST_CODE && results.isNotEmpty()
+                && results[0] == PackageManager.PERMISSION_GRANTED
     }
 
     private companion object {

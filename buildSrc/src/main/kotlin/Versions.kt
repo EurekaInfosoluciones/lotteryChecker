@@ -1,6 +1,6 @@
 object Versions {
 
-    const val BEN_NAMES = "0.24.0"
+    const val BEN_NAMES = "0.25.0"
 
     const val KOTLIN = "1.3.50"
     const val GRADLE_PLUGIN = "3.5.0"
@@ -14,7 +14,7 @@ object Versions {
     const val MOCKITO_KOTLIN = "2.2.0"
     const val ROBOLECTRIC = "4.3"
     const val ANDROIDX_TEST = "1.2.0"
-    const val ANDROIDX_JUNIT = "1.0.0"
+    const val ANDROIDX_JUNIT = "1.1.1"
     const val TRUTH = "1.0"
     const val ESPRESSO = "3.2.0"
 }

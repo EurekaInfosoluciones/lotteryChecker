@@ -11,8 +11,7 @@ import org.mockito.junit.MockitoRule
 
 class OnBoardingCameraViewModelTest {
 
-    @Rule
-    @JvmField
+    @Rule @JvmField
     val mockery: MockitoRule = MockitoJUnit.rule()
 
     @Mock
@@ -20,20 +19,17 @@ class OnBoardingCameraViewModelTest {
 
     private lateinit var onBoardingCameraViewModel: OnBoardingCameraViewModel
 
-    @Before
-    fun setUp() {
+    @Before fun setUp() {
         onBoardingCameraViewModel = OnBoardingCameraViewModel(requestPermission)
     }
 
-    @Test
-    fun requestsPermissionUsingCollaborator() {
+    @Test fun requestsPermissionUsingCollaborator() {
         onBoardingCameraViewModel.requestPermission()
 
         verify(requestPermission).request()
     }
 
-    @Test
-    fun delegatesPermissionCheckToTheCollaborator() {
+    @Test fun delegatesPermissionCheckToTheCollaborator() {
         val permissions = arrayOf(A_PERMISSION)
         val results = intArrayOf(A_RESULT)
 

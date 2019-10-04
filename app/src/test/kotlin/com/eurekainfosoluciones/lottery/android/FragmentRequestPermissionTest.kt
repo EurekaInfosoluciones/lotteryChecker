@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class FragmentRequestPermissionTest {
 
-    private val fragmentRequestPermission = FragmentRequestPermission(Fragment(), arrayOf("Blah"))
+    private val fragmentRequestPermission = FragmentRequestPermission(Fragment(), "Blah")
 
     @Test
     fun returnsTrueIfPermissionIsGranted() {
@@ -21,5 +21,27 @@ class FragmentRequestPermissionTest {
                 intArrayOf(PackageManager.PERMISSION_GRANTED)
             )
         ).isTrue()
+    }
+
+    @Test
+    fun returnsFalseIfPermissionIsDenied() {
+        assertThat(
+            fragmentRequestPermission.verifyResult(
+                123,
+                arrayOf("Blah"),
+                intArrayOf(PackageManager.PERMISSION_DENIED)
+            )
+        ).isFalse()
+    }
+
+    @Test
+    fun returnsFalseIfPermissionIsGranted_differentRequestCode() {
+        assertThat(
+            fragmentRequestPermission.verifyResult(
+                1242,
+                arrayOf("Blah"),
+                intArrayOf(PackageManager.PERMISSION_DENIED)
+            )
+        ).isFalse()
     }
 }
