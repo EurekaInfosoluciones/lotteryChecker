@@ -47,12 +47,14 @@ dependencies {
     )
     testImplementation "androidx.test.ext:junit:${Versions.ANDROIDX_JUNIT}"
     testImplementation "com.google.truth:truth:${Versions.TRUTH}"
+    testImplementation "androidx.arch.core:core-testing:${Versions.ANDROIDX_CORE_TESTING}"
 
     androidTestImplementation(
             "androidx.test:runner:${Versions.ANDROIDX_TEST}",
             "androidx.test:rules:${Versions.ANDROIDX_TEST}"
     )
     androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
+    androidTestImplementation "androidx.test:rules:${Versions.ANDROIDX_RULES}"
 
     // Optional -- Hamcrest library
     androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'

@@ -6,10 +6,20 @@
     android:id="@+id/app_nav"
     app:startDestination="@id/onBoardingCameraFragment">
 
-
     <fragment
         android:id="@+id/onBoardingCameraFragment"
         android:name="com.eurekainfosoluciones.lottery.fragments.OnBoardingCameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera"/>
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_onBoardingCameraFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="com.eurekainfosoluciones.lottery.fragments.ScannerFragment"
+        android:label="fragment_scanner"
+        tools:layout="@layout/fragment_scanner"
+        />
 </navigation>

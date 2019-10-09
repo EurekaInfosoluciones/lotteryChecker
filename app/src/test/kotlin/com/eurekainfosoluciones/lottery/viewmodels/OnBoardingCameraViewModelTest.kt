@@ -1,7 +1,11 @@
 package com.eurekainfosoluciones.lottery.viewmodels
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.eurekainfosoluciones.lottery.android.RequestPermission
+import com.eurekainfosoluciones.lottery.viewmodels.states.PermissionState
+import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -11,11 +15,10 @@ import org.mockito.junit.MockitoRule
 
 class OnBoardingCameraViewModelTest {
 
-    @Rule @JvmField
-    val mockery: MockitoRule = MockitoJUnit.rule()
+    @Rule @JvmField val mockery: MockitoRule = MockitoJUnit.rule()
+    @get:Rule val rule = InstantTaskExecutorRule()
 
-    @Mock
-    private lateinit var requestPermission: RequestPermission
+    @Mock private lateinit var requestPermission: RequestPermission
 
     private lateinit var onBoardingCameraViewModel: OnBoardingCameraViewModel
 
@@ -29,13 +32,40 @@ class OnBoardingCameraViewModelTest {
         verify(requestPermission).request()
     }
 
-    @Test fun delegatesPermissionCheckToTheCollaborator() {
+    @Test fun updatesPermissionState_permissionGranted() {
         val permissions = arrayOf(A_PERMISSION)
         val results = intArrayOf(A_RESULT)
+        onBoardingCameraViewModel.permissionState.observeForever { }
+
+        whenever(
+            requestPermission.verifyResult(
+                A_REQUEST_CODE,
+                permissions,
+                results
+            )
+        ).thenAnswer { true }
 
         onBoardingCameraViewModel.checkPermission(A_REQUEST_CODE, permissions, results)
 
-        verify(requestPermission).verifyResult(A_REQUEST_CODE, permissions, results)
+        assertThat(onBoardingCameraViewModel.permissionState.value).isEqualTo(PermissionState.GRANTED)
+    }
+
+    @Test fun updatesPermissionState_permissionDeclined() {
+        val permissions = arrayOf(A_PERMISSION)
+        val results = intArrayOf(A_RESULT)
+        onBoardingCameraViewModel.permissionState.observeForever { }
+
+        whenever(
+            requestPermission.verifyResult(
+                A_REQUEST_CODE,
+                permissions,
+                results
+            )
+        ).thenAnswer { false }
+
+        onBoardingCameraViewModel.checkPermission(A_REQUEST_CODE, permissions, results)
+
+        assertThat(onBoardingCameraViewModel.permissionState.value).isEqualTo(PermissionState.DECLINED)
     }
 
     private companion object {
