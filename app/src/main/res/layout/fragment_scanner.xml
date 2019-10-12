@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.eurekainfosoluciones.lottery.widgets.CameraPreview
+    <com.eurekainfosoluciones.lottery.widgets.ReaderOverlayView
         android:id="@+id/barcodeCameraPreview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

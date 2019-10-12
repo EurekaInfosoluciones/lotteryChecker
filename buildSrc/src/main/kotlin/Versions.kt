@@ -16,6 +16,7 @@ object Versions {
     const val ANDROIDX_TEST = "1.2.0"
     const val ANDROIDX_RULES = "1.2.0"
     const val ANDROIDX_JUNIT = "1.1.1"
+    const val ANDROIDX_LIFECYCLE = "2.1.0"
     const val ANDROIDX_CORE_TESTING = "2.1.0"
     const val TRUTH = "1.0"
     const val ESPRESSO = "3.2.0"

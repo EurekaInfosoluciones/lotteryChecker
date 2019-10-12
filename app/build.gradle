@@ -37,6 +37,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-vision:${Versions.PLAY_SERVICES_VISION}"
     implementation "androidx.navigation:navigation-fragment-ktx:${Versions.ANDROIDX_NAVIGATION}"
     implementation "androidx.navigation:navigation-ui-ktx:${Versions.ANDROIDX_NAVIGATION}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${Versions.ANDROIDX_LIFECYCLE}"
 
     testImplementation "junit:junit:${Versions.JUNIT}"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.MOCKITO_KOTLIN}"

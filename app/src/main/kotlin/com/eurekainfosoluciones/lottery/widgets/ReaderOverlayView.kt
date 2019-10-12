@@ -12,7 +12,7 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.eurekainfosoluciones.lottery.R
 import com.eurekainfosoluciones.lottery.android.dpToPixels
 
-class CameraPreview @JvmOverloads constructor(
+class ReaderOverlayView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
