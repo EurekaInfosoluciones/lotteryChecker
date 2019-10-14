@@ -25,6 +25,11 @@ class ScannerFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        lifecycle.addObserver(CameraLifecycleObserver(view.findViewById(R.id.barcodeSurfaceView), viewModelStore))
+        lifecycle.addObserver(
+            CameraLifecycleObserver(
+                view.findViewById(R.id.barcodeSurfaceView),
+                viewModel
+            )
+        )
     }
 }

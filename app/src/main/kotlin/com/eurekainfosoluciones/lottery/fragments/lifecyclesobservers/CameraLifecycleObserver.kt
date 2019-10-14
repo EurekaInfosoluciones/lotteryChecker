@@ -5,7 +5,7 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.eurekainfosoluciones.lottery.injectors.VibratorManagerInjector
+import androidx.lifecycle.viewModelScope
 import com.eurekainfosoluciones.lottery.viewmodels.ScannerViewModel
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
@@ -13,16 +13,18 @@ import com.google.android.gms.vision.FocusingProcessor
 import com.google.android.gms.vision.Tracker
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
+import kotlinx.coroutines.launch
 
 
-class CameraLifecycleObserver(private val surfaceView: SurfaceView) : DefaultLifecycleObserver,
+class CameraLifecycleObserver(
+    private val surfaceView: SurfaceView,
+    private val viewModel: ScannerViewModel
+) : DefaultLifecycleObserver,
     SurfaceHolder.Callback {
-
-    private val viewModel: ScannerViewModel = createla()
 
     private val barcodeDetector: BarcodeDetector by lazy {
         BarcodeDetector.Builder(surfaceView.context)
-            .setBarcodeFormats(Barcode.QR_CODE)
+            .setBarcodeFormats(Barcode.QR_CODE) // Once is probably using Barcode.CODABAR
             .build()
     }
     private val cameraSource: CameraSource by lazy {
@@ -33,7 +35,6 @@ class CameraLifecycleObserver(private val surfaceView: SurfaceView) : DefaultLif
     }
 
     override fun onCreate(owner: LifecycleOwner) {
-
         surfaceView.holder.addCallback(this)
     }
 
@@ -63,7 +64,12 @@ class CameraLifecycleObserver(private val surfaceView: SurfaceView) : DefaultLif
     private inner class BarcodeTracker : Tracker<Barcode>() {
         override fun onNewItem(id: Int, barcode: Barcode) {
             Log.v("DMV", "Barcode is ${barcode.displayValue} + ${this}")
-            VibratorManagerInjector.vibratorManager(surfaceView.context).vibrateForSuccess()
+            //maybe listener to the fragment instead?
+            viewModel.viewModelScope.launch {
+                viewModel.recognized(barcode.displayValue)
+            }
+//            VibratorManagerInjector.vibratorManager(surfaceView.context).vibrateForSuccess()
+//            cameraSource.stop()
         }
     }
 }

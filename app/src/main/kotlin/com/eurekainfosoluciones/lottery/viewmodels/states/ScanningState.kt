@@ -1,9 +1,7 @@
 package com.eurekainfosoluciones.lottery.viewmodels.states
 
-enum class ScanningState {
-    SCANNING,
-    VALIDATING,
-    SUPPORTED,
-    UNSUPPORTED_FORMAT
-
-}
+sealed class ScanningState
+object Scanning : ScanningState()
+object Validating : ScanningState()
+object Supported : ScanningState()
+object Unsupported : ScanningState()
